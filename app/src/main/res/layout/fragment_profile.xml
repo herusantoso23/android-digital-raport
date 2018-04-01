@@ -1,0 +1,101 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context="com.herusantoso.latihan.mingguapps.ProfileFragment">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           >
+
+           <EditText
+               android:id="@+id/edit_nis"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="NIK"
+               android:enabled="false"
+               android:background="@drawable/rounded_edittext"
+               android:padding="10dp"
+               android:layout_marginBottom="10dp"
+               />
+
+
+           <EditText
+               android:id="@+id/edit_name"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Nama"
+               android:enabled="false"
+               android:background="@drawable/rounded_edittext"
+               android:padding="10dp"
+               android:layout_marginBottom="10dp"
+               />
+
+
+           <EditText
+               android:id="@+id/edit_class"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Kelas"
+               android:enabled="false"
+               android:background="@drawable/rounded_edittext"
+               android:padding="10dp"
+               android:layout_marginBottom="10dp"
+               />
+
+
+           <EditText
+               android:id="@+id/edit_phone"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Handphone"
+               android:background="@drawable/rounded_edittext"
+               android:padding="10dp"
+               android:layout_marginBottom="10dp"
+               />
+
+
+           <EditText
+               android:id="@+id/edit_address"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Alamat"
+               android:background="@drawable/rounded_edittext"
+               android:padding="10dp"
+               />
+
+           <Button
+               android:id="@+id/btn_save"
+               android:layout_marginTop="40dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Simpan"
+               android:textColor="#fff"
+               android:textStyle="bold"
+               android:background="@drawable/rounded_button"
+               android:layout_marginBottom="10dp"
+               />
+
+
+           <Button
+               android:id="@+id/btn_change_pass"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Rubah Password"
+               android:textColor="#fff"
+               android:textStyle="bold"
+               android:background="@drawable/rounded_button"
+               />
+
+       </LinearLayout>
+   </ScrollView>
+
+
+</FrameLayout>

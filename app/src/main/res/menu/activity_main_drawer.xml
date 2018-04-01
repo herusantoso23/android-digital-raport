@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pengajr"
+            android:icon="@drawable/ic_lecture"
+            android:title="Profil Pengajar" />
+        <item
+            android:id="@+id/nav_jadwal"
+            android:icon="@drawable/ic_jadwal"
+            android:title="Jadwal" />
+        <item
+            android:id="@+id/nav_raport"
+            android:icon="@drawable/ic_raport"
+            android:title="Raport" />
+
+        <item
+            android:id="@+id/nav_lokasi"
+            android:icon="@drawable/ic_map"
+            android:title="Lokasi" />
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Tentang Sekolah" />
+
+    </group>
+
+    <item android:title="Akun">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_account_circle_black_24dp"
+                android:title="Profile" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_account_circle_black_24dp"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
