@@ -1,0 +1,121 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.herusantoso.latihan.mingguapps.PengajarProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+        -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_photo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:civ_border_width="2dp"
+            android:src="@drawable/avatar"
+            android:layout_centerHorizontal="true"
+            app:civ_border_color="#ffffff"
+            android:layout_margin="60dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/img_photo"
+            >
+
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:text="Display Name"
+                android:textSize="25sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txt_phone"
+                android:text="087760586526"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txt_mapel"
+                android:text="Bahasa Inggris"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/txt_address"
+                android:text="Alamat"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+
+            <Button
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_button"
+                android:id="@+id/btn_message"
+                android:backgroundTint="@android:color/white"
+                android:text="MESSAGE"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_button"
+                android:id="@+id/btn_call"
+                android:backgroundTint="@android:color/white"
+                android:text="CALL"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout
+            >
+
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

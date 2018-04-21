@@ -6,12 +6,15 @@ import com.herusantoso.latihan.mingguapps.model.Student;
 import com.herusantoso.latihan.mingguapps.model.StudentChangePassword;
 import com.herusantoso.latihan.mingguapps.model.StudentUpdate;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 /**
@@ -40,4 +43,11 @@ public interface StudentApiInterface {
     @POST("digital_raport/student/change-password.php")
     Call<ResultMessage> changePass(
             @Body StudentChangePassword studentChangePassword);
+
+    @Headers("Content-Type: application/json")
+    @Multipart
+    @POST("digital_raport/student/upload.php")
+    Call<ResultMessage> uploadPhoto(
+            @Part("nis") String nis,
+            @Part MultipartBody.Part image);
 }

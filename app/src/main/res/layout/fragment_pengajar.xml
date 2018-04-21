@@ -2,21 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.herusantoso.latihan.mingguapps.PengajarFragment">
+    tools:context="com.herusantoso.latihan.mingguapps.PengajarFragment"
+    android:layout_margin="10dp"
+    >
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="INi adalah Pengajar Fragmenr"
-        />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
 
 </FrameLayout>

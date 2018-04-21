@@ -5,7 +5,7 @@ package com.herusantoso.latihan.mingguapps.api;
  */
 
 public class ApiClient {
-    private static String link = "http://192.168.43.173/";
+    private static String link = "http://192.168.100.12/";
 
     public static final String URL = link;
 }

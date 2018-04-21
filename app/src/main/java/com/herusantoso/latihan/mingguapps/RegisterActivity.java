@@ -52,13 +52,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String pass = editPassword.getText().toString();
                 String confirmPass = editConfirmPassword.getText().toString();
-
-                if(!pass.equals(confirmPass)){
-                    Toast.makeText(getApplicationContext(), "Password tidak sama",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    bindData();
-                }
+//
+//                if(!pass.equals(confirmPass)){
+//                    Toast.makeText(getApplicationContext(), "Password tidak sama",
+//                            Toast.LENGTH_SHORT).show();
+//                } else {
+//                    bindData();
+//                }
 
 
             }
@@ -66,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void bindData() {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiClient.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -73,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         StudentApiInterface api = retrofit.create(StudentApiInterface.class);
 
+        //set pojo from component (xml)
         Student student = new Student();
         student.setNis(editNis.getText().toString());
         student.setName(editName.getText().toString());

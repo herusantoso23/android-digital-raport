@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new ProfileFragment())
                     .commit();
+        } else if (id == R.id.nav_pengajr) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new PengajarFragment())
+                    .commit();
         } else if (id == R.id.nav_logout){
             session.logout();
             finish();
