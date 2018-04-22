@@ -41,6 +41,7 @@ public class PengajarProfileFragment extends Fragment {
     private TextView txtMapel;
     private ImageView imgPhoto;
     private Button btnCall;
+    private Button btnMessage;
 
     public static String KEY_NIP = "nip";
 
@@ -60,6 +61,7 @@ public class PengajarProfileFragment extends Fragment {
         txtMapel = (TextView) myView.findViewById(R.id.txt_mapel);
         imgPhoto = (ImageView) myView.findViewById(R.id.img_photo);
         btnCall = (Button) myView.findViewById(R.id.btn_call);
+        btnMessage = (Button) myView.findViewById(R.id.btn_message);
 
         nip = getArguments().getString(KEY_NIP);
 
@@ -68,9 +70,18 @@ public class PengajarProfileFragment extends Fragment {
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse(txtPhone.getText().toString()));
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+txtPhone.getText().toString()));
                 startActivity(callIntent);
+            }
+        });
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent msgIntent = new Intent(Intent.ACTION_VIEW);
+                msgIntent.setData(Uri.parse("sms:"+txtPhone.getText().toString()));
+                startActivity(msgIntent);
             }
         });
 
