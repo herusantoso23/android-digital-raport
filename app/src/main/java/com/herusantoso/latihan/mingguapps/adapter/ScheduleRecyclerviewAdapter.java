@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.herusantoso.latihan.mingguapps.PengajarProfileFragment;
 import com.herusantoso.latihan.mingguapps.R;
+import com.herusantoso.latihan.mingguapps.ScheduleDetailFragment;
 import com.herusantoso.latihan.mingguapps.model.Schedule;
 
 import java.util.List;
@@ -46,6 +47,8 @@ public class ScheduleRecyclerviewAdapter extends RecyclerView.Adapter<ScheduleRe
         holder.txtTime.setText(schedule.getTime());
         holder.txtKelas.setText(schedule.getClassName());
         holder.txtMapel.setText(schedule.getMapelName());
+        holder.txtJurusan.setText(schedule.getJurusan());
+        holder.txtTeacher.setText(schedule.getTeacher());
     }
 
     @Override
@@ -57,7 +60,11 @@ public class ScheduleRecyclerviewAdapter extends RecyclerView.Adapter<ScheduleRe
         private TextView txtTime;
         private TextView txtKelas;
         private TextView txtMapel;
+        private TextView txtJurusan;
+        private TextView txtTeacher;
+
         Activity activity;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -66,13 +73,35 @@ public class ScheduleRecyclerviewAdapter extends RecyclerView.Adapter<ScheduleRe
             txtTime = (TextView) itemView.findViewById(R.id.txt_waktu);
             txtKelas = (TextView) itemView.findViewById(R.id.txt_nama_kelas);
             txtMapel = (TextView) itemView.findViewById(R.id.txt_mapel);
+            txtJurusan = (TextView) itemView.findViewById(R.id.txt_jurusan);
+            txtTeacher = (TextView) itemView.findViewById(R.id.txt_teacher);
+
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            
+            String kelas = txtKelas.getText().toString();
+            String mapel = txtMapel.getText().toString();
+            String time = txtTime.getText().toString();;
+            String teacher = txtTeacher.getText().toString();
+            String jurusan = txtJurusan.getText().toString();
+
+            Bundle data = new Bundle();
+            data.putString(ScheduleDetailFragment.KEY_CLASS_NAME, kelas);
+            data.putString(ScheduleDetailFragment.KEY_MAPEL, mapel);
+            data.putString(ScheduleDetailFragment.KEY_TIME, time);
+            data.putString(ScheduleDetailFragment.KEY_JURUSAN, jurusan);
+            data.putString(ScheduleDetailFragment.KEY_TEACHER, teacher);
+
+            Fragment fragment = new ScheduleDetailFragment();
+            fragment.setArguments(data);
+            FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 

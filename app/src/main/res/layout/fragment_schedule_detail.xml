@@ -1,0 +1,93 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.herusantoso.latihan.mingguapps.ScheduleDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/img_photo"
+            android:layout_centerVertical="true"
+            >
+
+
+            <TextView
+                android:id="@+id/txt_waktu"
+                android:text="SENIN, 10.00-13.00"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txt_mapel"
+                android:text="Bahasa Inggris"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txt_jurusan"
+                android:text="TSM"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/txt_kelas"
+                android:text="12 TSM 1"
+                android:textSize="30sp"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:text="Pengajar :"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txt_teacher"
+                android:text="Nama Pengajar S.Pd"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
