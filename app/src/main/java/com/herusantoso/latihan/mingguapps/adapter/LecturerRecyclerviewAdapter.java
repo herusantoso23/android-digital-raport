@@ -94,4 +94,6 @@ public class LecturerRecyclerviewAdapter extends RecyclerView.Adapter<LecturerRe
             fragmentTransaction.commit();
         }
     }
+
+
 }
