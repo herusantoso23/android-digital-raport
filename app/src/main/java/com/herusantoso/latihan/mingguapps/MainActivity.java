@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new ScheduleFragment())
                     .commit();
+        } else if (id == R.id.nav_raport) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new RaportFragment())
+                    .commit();
         } else if (id == R.id.nav_logout){
             session.logout();
             finish();
