@@ -22,6 +22,18 @@ public class Student {
     @SerializedName("password")
     private String password;
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    @SerializedName("photo")
+
+    private String photo;
+
     public Integer getId() {
         return id;
     }

@@ -121,8 +121,9 @@ public class PengajarProfileFragment extends Fragment {
                     txtMapel.setText(lecturerList.get(0).getMapel());
                     txtPhone.setText(lecturerList.get(0).getPhone());
                     txtAddress.setText(lecturerList.get(0).getAddress());
+                    String foto = ApiClient.URL + lecturerList.get(0).getPhoto();
                     Glide.with(getContext())
-                            .load(lecturerList.get(0).getPhoto())
+                            .load(foto)
                             .placeholder(R.drawable.avatar)
                             .into(imgPhoto);
                 } else {

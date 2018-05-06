@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.herusantoso.latihan.mingguapps.PengajarProfileFragment;
 import com.herusantoso.latihan.mingguapps.R;
+import com.herusantoso.latihan.mingguapps.api.ApiClient;
 import com.herusantoso.latihan.mingguapps.model.Lecturer;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class LecturerRecyclerviewAdapter extends RecyclerView.Adapter<LecturerRe
         holder.txtNama.setText(lecturer.getName());
         holder.txtMapel.setText(lecturer.getMapel());
         Glide.with(context)
-                .load(lecturer.getPhoto())
+                .load(ApiClient.URL + lecturer.getPhoto())
                 .placeholder(R.drawable.avatar)
                 .into(holder.imgPhoto);
     }

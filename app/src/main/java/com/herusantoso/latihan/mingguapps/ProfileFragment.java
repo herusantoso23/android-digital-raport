@@ -1,21 +1,32 @@
 package com.herusantoso.latihan.mingguapps;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.herusantoso.latihan.mingguapps.api.ApiClient;
 import com.herusantoso.latihan.mingguapps.api.StudentApiInterface;
@@ -24,17 +35,28 @@ import com.herusantoso.latihan.mingguapps.model.Student;
 import com.herusantoso.latihan.mingguapps.model.StudentUpdate;
 import com.herusantoso.latihan.mingguapps.session.SessionManager;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import pub.devrel.easypermissions.EasyPermissions;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.R.id.edit;
+import static android.R.attr.fragment;
+import static android.R.attr.name;
+import static android.app.Activity.RESULT_OK;
+import static com.herusantoso.latihan.mingguapps.R.drawable.avatar;
 
 public class ProfileFragment extends Fragment {
 
@@ -51,6 +73,12 @@ public class ProfileFragment extends Fragment {
     HashMap<String, String> user;
     SessionManager session;
 
+    private Button btnUpload;
+    private ImageView imgPhoto;
+    private String imagePath;
+    private static int LOAD_IMAGE_RESULTS = 1;
+    ProgressDialog pd;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +94,11 @@ public class ProfileFragment extends Fragment {
 
         btnSimpan = (Button) myView.findViewById(R.id.btn_save);
         btnChangePassword = (Button) myView.findViewById(R.id.btn_change_pass);
+        btnUpload = (Button) myView.findViewById(R.id.btn_upload);
+        imgPhoto = (ImageView) myView.findViewById(R.id.img_photo);
+
+        pd = new ProgressDialog(myView.getContext());
+        pd.setMessage("loading ... ");
 
         bindData();
 
@@ -85,6 +118,29 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            }
+        });
+
+        imgPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] galleryPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                if (EasyPermissions.hasPermissions(myView.getContext(), galleryPermissions)) {
+                    Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(i,LOAD_IMAGE_RESULTS);
+                } else {
+                    EasyPermissions.requestPermissions(myView.getContext(), "Access for storage",
+                            101, galleryPermissions);
+                }
             }
         });
 
@@ -116,6 +172,10 @@ public class ProfileFragment extends Fragment {
                     editClass.setText(studentList.get(0).getClassLevel());
                     editAddress.setText(studentList.get(0).getAddress());
                     editPhone.setText(studentList.get(0).getPhone());
+                    Glide.with(getContext())
+                            .load(studentList.get(0).getPhoto())
+                            .placeholder(R.drawable.avatar)
+                            .into(imgPhoto);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), response.body().getResult().toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -163,6 +223,75 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "Jaringan Error !", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == LOAD_IMAGE_RESULTS && resultCode == getActivity().RESULT_OK && data != null) {
+            try {
+
+                InputStream is = getActivity().getContentResolver().openInputStream(data.getData());
+
+                uploadImage(getBytes(is));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public byte[] getBytes(InputStream is) throws IOException {
+        ByteArrayOutputStream byteBuff = new ByteArrayOutputStream();
+
+        int buffSize = 1024;
+        byte[] buff = new byte[buffSize];
+
+        int len = 0;
+        while ((len = is.read(buff)) != -1) {
+            byteBuff.write(buff, 0, len);
+        }
+
+        return byteBuff.toByteArray();
+    }
+
+    public void uploadImage(byte[] imageBytes){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiClient.URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        StudentApiInterface api = retrofit.create(StudentApiInterface.class);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes);
+        RequestBody requestNis = RequestBody.create(MediaType.parse("text/plain"), user.get(SessionManager.nis_key));
+        MultipartBody.Part body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
+
+        Call<ResultMessage> call = api.uploadImage(body, requestNis);
+        call.enqueue(new Callback<ResultMessage>() {
+            @Override
+            public void onResponse(Call<ResultMessage> call, Response<ResultMessage> response) {
+                String message = response.body().getMessage().toString();
+
+                if (message.equals("1")) {
+                    String url = ApiClient.URL + response.body().getResult().toString();
+                    Glide.with(getContext())
+                            .load(url)
+                            .placeholder(R.drawable.avatar)
+                            .into(imgPhoto);
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(), response.body().getResult().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultMessage> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getActivity().getApplicationContext(), "Jaringan Error !", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 }
