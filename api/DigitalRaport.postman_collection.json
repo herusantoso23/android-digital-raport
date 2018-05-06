@@ -1,0 +1,518 @@
+{
+	"id": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+	"name": "DigitalRaport",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "auth",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"15bbf5aa-3045-c813-129d-bf7391eb746b",
+				"33b54e52-90a1-60cb-c07a-1925e0df9210",
+				"572e8992-c1b3-4243-6822-0dfb75b189fa"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"auth": null,
+			"id": "3cb8b527-ff2f-493e-db4b-39cc205134a6"
+		},
+		{
+			"name": "lecturer",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [],
+			"owner": "2031192",
+			"folders_order": [],
+			"id": "67038a47-e35e-6bdc-80fa-3e11de0f7cb3"
+		},
+		{
+			"name": "parameter",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"4a1c8d71-60c2-133c-87f8-a98c30e2e1b2"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"id": "e41354ca-f825-4681-63cc-e3cb1c5efa72"
+		},
+		{
+			"name": "raport",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"3a7fb440-0c65-3493-8ce2-ff2658f071f6"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"id": "bcf92065-bb29-b09c-7d4a-02414996646a"
+		},
+		{
+			"name": "schedule",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"782876e5-2f39-e0ce-f138-574317a0cdd2"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"id": "e8ea8bf8-ce65-fdfc-2560-811d7f7e0a6f"
+		},
+		{
+			"name": "siswa",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"77511f22-673d-09e7-6084-d54bd6813749",
+				"18a53880-a2b2-8d55-ded4-190a11ee7463",
+				"d464a5b5-d196-47b5-4b7f-f8b0ca408713",
+				"bf8b625c-1b1a-7b13-33b4-c88431869895"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"auth": null,
+			"id": "bcc8bb01-9d68-624e-007f-e91ccc5debdf"
+		},
+		{
+			"name": "teacher",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"order": [
+				"4c922322-dcf9-c1d1-17dd-2990220a0c9a",
+				"2b661db2-c9e7-9ee0-60a6-9f139c895387"
+			],
+			"owner": "2031192",
+			"folders_order": [],
+			"id": "27f998c6-c7d3-977a-8176-20abc68e79f6"
+		}
+	],
+	"folders_order": [
+		"3cb8b527-ff2f-493e-db4b-39cc205134a6",
+		"bcc8bb01-9d68-624e-007f-e91ccc5debdf",
+		"67038a47-e35e-6bdc-80fa-3e11de0f7cb3",
+		"27f998c6-c7d3-977a-8176-20abc68e79f6",
+		"e8ea8bf8-ce65-fdfc-2560-811d7f7e0a6f",
+		"e41354ca-f825-4681-63cc-e3cb1c5efa72",
+		"bcf92065-bb29-b09c-7d4a-02414996646a"
+	],
+	"timestamp": 1522447983931,
+	"owner": "2031192",
+	"public": false,
+	"requests": [
+		{
+			"id": "15bbf5aa-3045-c813-129d-bf7391eb746b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/registrasi/registrasi.php",
+			"folder": "3cb8b527-ff2f-493e-db4b-39cc205134a6",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523496183051,
+			"name": "registrasi",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"rawModeData": "{\n\t\"nis\":\"311410121\" ,\n\t\"nama\":\"Heru Santoso\",\n\t\"kelas\":\"TI 14 C 1\",\n\t\"no_hp\":\"087760586526\",\n\t\"alamat\":\"Perum Mega Regency\",\n\t\"password\":\"123456\"\n}"
+		},
+		{
+			"id": "18a53880-a2b2-8d55-ded4-190a11ee7463",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/student/update-profile.php",
+			"folder": "bcc8bb01-9d68-624e-007f-e91ccc5debdf",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523496206968,
+			"name": "update-profile",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"rawModeData": "{\n\t\"nis\":\"311410120\",\n\t\"kelas\":\"TI 14 B 8\",\n\t\"noHp\":\"08776058652600000000000\",\n\t\"alamat\":\"Perum Mega Regency0000000000\"\n}"
+		},
+		{
+			"id": "2b661db2-c9e7-9ee0-60a6-9f139c895387",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/lecturer/get-detail.php?nip=311410119",
+			"folder": "27f998c6-c7d3-977a-8176-20abc68e79f6",
+			"queryParams": [
+				{
+					"key": "nip",
+					"value": "311410119",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1524757739610,
+			"name": "get-all.php copy",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": []
+		},
+		{
+			"id": "33b54e52-90a1-60cb-c07a-1925e0df9210",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/auth/login.php",
+			"folder": "3cb8b527-ff2f-493e-db4b-39cc205134a6",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1525568498965,
+			"name": "login",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\":\"311410120\",\n\t\"password\":\"123456\"\n}"
+		},
+		{
+			"id": "3a7fb440-0c65-3493-8ce2-ff2658f071f6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/raport/raport.php?nis=311410119&semester=1",
+			"queryParams": [
+				{
+					"key": "nis",
+					"value": "311410119",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "semester",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1525617108089,
+			"name": "get-raport",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": []
+		},
+		{
+			"id": "4a1c8d71-60c2-133c-87f8-a98c30e2e1b2",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost/digital_raport/parameter/get-semester.php",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"data": null,
+			"dataMode": "params",
+			"name": "get-semester",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1525617161319,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "e41354ca-f825-4681-63cc-e3cb1c5efa72"
+		},
+		{
+			"id": "4c922322-dcf9-c1d1-17dd-2990220a0c9a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/lecturer/get-all.php",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"data": null,
+			"dataMode": "params",
+			"name": "get-all.php",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1524369091885,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "27f998c6-c7d3-977a-8176-20abc68e79f6"
+		},
+		{
+			"id": "572e8992-c1b3-4243-6822-0dfb75b189fa",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/belajar_api/digital_raport/auth/login.php",
+			"folder": "3cb8b527-ff2f-493e-db4b-39cc205134a6",
+			"queryParams": [],
+			"events": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1522453975910,
+			"name": "logout",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"username\":\"311410119\",\n\t\"password\":\"santoso\"\n}",
+			"collection_id": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"preRequestScript": "",
+			"tests": ""
+		},
+		{
+			"id": "77511f22-673d-09e7-6084-d54bd6813749",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/student/get-profile.php?nis=311410120",
+			"folder": "bcc8bb01-9d68-624e-007f-e91ccc5debdf",
+			"queryParams": [
+				{
+					"key": "nis",
+					"value": "311410120",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1523496179061,
+			"name": "get-profile",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\":\"311410119\",\n\t\"password\":\"123456\"\n}"
+		},
+		{
+			"id": "782876e5-2f39-e0ce-f138-574317a0cdd2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/digital_raport/schedule/get-all.php",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"data": null,
+			"dataMode": "params",
+			"name": "localhost/digital_raport/schedule/get-all.php",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1525568512555,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "e8ea8bf8-ce65-fdfc-2560-811d7f7e0a6f"
+		},
+		{
+			"id": "bf8b625c-1b1a-7b13-33b4-c88431869895",
+			"headers": "//Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "localhost/digital_raport/student/upload-foto.php",
+			"folder": "bcc8bb01-9d68-624e-007f-e91ccc5debdf",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "image",
+					"value": "Screenshot email gagal kirim.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "nis",
+					"value": "311410120",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1525568497121,
+			"name": "upload-foto",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": []
+		},
+		{
+			"id": "d464a5b5-d196-47b5-4b7f-f8b0ca408713",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost/belajar_api/digital_raport/siswa/change-password.php?id=2",
+			"folder": "bcc8bb01-9d68-624e-007f-e91ccc5debdf",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522527636974,
+			"name": "change-password",
+			"description": "",
+			"collectionId": "bd2cc39c-67fd-6d50-6cb7-0dd1356e628a",
+			"responses": [],
+			"rawModeData": "{\n\t\"old_pass\":\"santoso\",\n\t\"new_pass\":\"santoso\",\n\t\"confirm_pass\":\"santoso\"\n}"
+		}
+	]
+}
