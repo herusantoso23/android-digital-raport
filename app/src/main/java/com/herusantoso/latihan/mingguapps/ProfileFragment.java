@@ -7,13 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +27,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.common.api.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -42,6 +51,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -77,7 +87,8 @@ public class ProfileFragment extends Fragment {
     private ImageView imgPhoto;
     private String imagePath;
     private static int LOAD_IMAGE_RESULTS = 1;
-    ProgressDialog pd;
+
+    private boolean isReload = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,9 +107,6 @@ public class ProfileFragment extends Fragment {
         btnChangePassword = (Button) myView.findViewById(R.id.btn_change_pass);
         btnUpload = (Button) myView.findViewById(R.id.btn_upload);
         imgPhoto = (ImageView) myView.findViewById(R.id.img_photo);
-
-        pd = new ProgressDialog(myView.getContext());
-        pd.setMessage("loading ... ");
 
         bindData();
 
@@ -148,6 +156,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void bindData() {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiClient.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -172,9 +181,27 @@ public class ProfileFragment extends Fragment {
                     editClass.setText(studentList.get(0).getClassLevel());
                     editAddress.setText(studentList.get(0).getAddress());
                     editPhone.setText(studentList.get(0).getPhone());
+
+                    Drawable placeholder = ContextCompat.getDrawable(myView.getContext(), R.drawable.avatar);
+
                     Glide.with(getContext())
-                            .load(studentList.get(0).getPhoto())
+                            .load(ApiClient.URL + studentList.get(0).getPhoto())
                             .placeholder(R.drawable.avatar)
+                            .listener(new RequestListener<String, GlideDrawable>() {
+                                    @Override
+                                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                        return false;
+                                    }
+
+                                    @Override
+                                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                        if(isReload == true){
+                                            bindData();
+                                            isReload = false;
+                                        }
+                                        return false;
+                                    }
+                                })
                             .into(imgPhoto);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), response.body().getResult().toString(), Toast.LENGTH_SHORT).show();
@@ -253,7 +280,7 @@ public class ProfileFragment extends Fragment {
         return byteBuff.toByteArray();
     }
 
-    public void uploadImage(byte[] imageBytes){
+    public void uploadImage(final byte[] imageBytes){
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -277,7 +304,8 @@ public class ProfileFragment extends Fragment {
                 if (message.equals("1")) {
                     String url = ApiClient.URL + response.body().getResult().toString();
                     Glide.with(getContext())
-                            .load(url)
+                            .load(imageBytes)
+                            .asBitmap()
                             .placeholder(R.drawable.avatar)
                             .into(imgPhoto);
                 } else {

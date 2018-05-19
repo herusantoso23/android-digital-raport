@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -46,14 +49,12 @@ public class PengajarProfileFragment extends Fragment {
     public static String KEY_NIP = "nip";
 
     String nip;
-
-    //private ProgressBar progressBar;
+    boolean isReload = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_pengajar_profile, container, false);
-        //progressBar = (ProgressBar) myView.findViewById(R.id.progress_bar);
 
         txtName = (TextView) myView.findViewById(R.id.txt_name);
         txtPhone = (TextView) myView.findViewById(R.id.txt_phone);
@@ -95,7 +96,7 @@ public class PengajarProfileFragment extends Fragment {
 
     }
 
-    private void bindData(String nip){
+    private void bindData(final String nip){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiClient.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -110,7 +111,6 @@ public class PengajarProfileFragment extends Fragment {
                 String value = response.body().getMessage();
 
                 if(value.equals("1")){
-                    //progressBar.setVisibility(myView.GONE);
                     Gson gson = new Gson();
                     JsonArray jsonArray = gson.toJsonTree(response.body().getResult()).getAsJsonArray();
                     //json to array
@@ -125,9 +125,23 @@ public class PengajarProfileFragment extends Fragment {
                     Glide.with(getContext())
                             .load(foto)
                             .placeholder(R.drawable.avatar)
+                            .listener(new RequestListener<String, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    if(isReload == true){
+                                        bindData(nip);
+                                        isReload = false;
+                                    }
+                                    return false;
+                                }
+                            })
                             .into(imgPhoto);
                 } else {
-                    //progressBar.setVisibility(myView.GONE);
                     Toast.makeText(getActivity().getApplicationContext(), response.body().getMessage().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
