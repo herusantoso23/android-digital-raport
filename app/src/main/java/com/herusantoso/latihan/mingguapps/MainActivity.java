@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity
         txtPhone = (TextView) hView.findViewById(R.id.txt_phone);
         imgFoto.setImageResource(R.drawable.avatar);
         bindData();
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new HomeFragment())
+                .commit();
     }
 
     @Override
@@ -142,6 +146,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout){
             session.logout();
             finish();
+        } else if (id == R.id.nav_home){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new HomeFragment())
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
